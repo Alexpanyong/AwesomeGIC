@@ -82,7 +82,7 @@ function App() {
     setBalance(newTransaction.balance);
     setOpenDialog(false);
     showMessage(
-      `Thank you. $${numAmount.toFixed(2)} has been ${action === "deposit" ? "deposited to your account" : "withdrawn"}.`,
+      `Thank you. $${numAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} has been ${action === "deposit" ? "deposited to your account" : "withdrawn"}.`,
       "success"
     );
   };
@@ -155,7 +155,7 @@ function App() {
               mt: 1
             }}
           >
-            ${balance.toFixed(2)}
+            ${balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </Typography>
         </Paper>
 
@@ -294,11 +294,11 @@ function App() {
                       <TableRow key={transaction.date.getTime()}>
                         <TableCell>{formatDate(transaction.date)}</TableCell>
                         <TableCell align="right">
-                          ${Math.abs(transaction.amount).toFixed(2)}
+                          ${Math.abs(transaction.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           {transaction.amount < 0 ? " (Withdrawal)" : " (Deposit)"}
                         </TableCell>
                         <TableCell align="right">
-                          ${transaction.balance.toFixed(2)}
+                          ${transaction.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </TableCell>
                       </TableRow>
                     ))}
